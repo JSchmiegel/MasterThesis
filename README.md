@@ -12,6 +12,7 @@ In conclusion, this thesis provides comprehensive insights into the characteriza
 
 ## Repo-Structure
 * `./thesis.pdf`: the thesis (main document)
-* `./data/*`: data collected and analyzed in the course of this thesis
+* `./data/*`: data collected and analyzed in the course of this thesis.
+    * `./data/Overiew.csv`: file that gives an overview over the parameter used for the different experiments.
 * `./LICENSE`: license that applies to this repo and the data within
 * `./assets`: assets for the README.md
