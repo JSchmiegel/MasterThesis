@@ -1,2 +1,4 @@
 tmp
 *.xlsx
+_venv_
+__pycache__

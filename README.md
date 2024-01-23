@@ -14,5 +14,8 @@ In conclusion, this thesis provides comprehensive insights into the characteriza
 * `./thesis.pdf`: the thesis (main document)
 * `./data/*`: data collected and analyzed in the course of this thesis.
     * `./data/Overiew.csv`: file that gives an overview over the parameter used for the different experiments.
+* `./code/*`: code to create the figures in the thesis.
+    * `./code/Overiew.csv`: file that gives an overview over the file used to create the listed figure.
+    * `./code/helper/*`: python classes that are used to reduce code in jupyter notebooks.
 * `./LICENSE`: license that applies to this repo and the data within
 * `./assets`: assets for the README.md
