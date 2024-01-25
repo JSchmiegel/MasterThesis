@@ -10,15 +10,43 @@ from copy import deepcopy
 from Colormap import Colormap
 
 class Data:
+    """
+    This class represents a dataset with associated metadata.
+    """
+
     def __init__(self, dataframe, name, timeRange=None, no_scanning=None):
+        """
+        Initializes a Data object.
+
+        Parameters:
+        - dataframe (pd.DataFrame): DataFrame containing the dataset.
+        - name (str): Name of the dataset.
+        - timeRange (tuple): Time range of the dataset (default is None).
+        - no_scanning: Information about scanning (default is None).
+        """
+
         self.dataframe = dataframe
         self.name = name
         self.timeRange = timeRange
         self.no_scanning = no_scanning
 
+
+
 class XperimentPlotter:
+    """
+    This class provides static methods for plotting and analyzing experimental data.
+    """
+
+
     @staticmethod
     def ShortStats(data):
+        """
+        Prints short statistics about the provided data.
+
+        Parameters:
+        - data (list): List of Data objects.
+        """
+
         print(f'***************')
         print(f'* STATISTICS: *')
         print(f'***************')
@@ -44,6 +72,19 @@ class XperimentPlotter:
 
     @staticmethod
     def ReadData(partPath, title, timerange=None, no_scanning=None):
+        """
+        Reads data from a file in the specified path and returns a Data object.
+
+        Parameters:
+        - partPath (str): Path to the file containing the data.
+        - title (str): Title of the Data object.
+        - timerange (tuple): Time range of the dataset (default is None).
+        - no_scanning: Information about scanning (default is None).
+
+        Returns:
+        Data: Data object containing the read data.
+        """
+
         for file in os.listdir(partPath):
             if fnmatch.fnmatch(file, 'allMeasurments20*.csv'):
                 return Data(pd.read_csv(f'{partPath}{file}', sep=','), title, timerange, no_scanning)
@@ -51,6 +92,17 @@ class XperimentPlotter:
 
     @staticmethod
     def mergeTempsInData(d, path_temps):
+        """
+        Merges temperature data into the provided Data object.
+
+        Parameters:
+        - d (Data): Data object to merge temperature data into.
+        - path_temps (str): Path to temperature data.
+
+        Returns:
+        Data: Updated Data object with merged temperature data.
+        """
+
         startTimestamp = pd.to_datetime(d.timeRange[0], format='%Y-%m-%d %H:%M')
         endTimestamp = pd.to_datetime(d.timeRange[1], format='%Y-%m-%d %H:%M')
         timestamps = []
@@ -92,6 +144,25 @@ class XperimentPlotter:
 
     @staticmethod
     def fitApproach(df, numberdatapoints, cuts, kernel, mean_funct=None, likelihood=None, iterationlimit=300, method='L-BFGS-B', showStd=False, path='tmp', baseFigurePath='./tmp/figures'):
+        """
+        Fits a Gaussian Process regression model to the provided data and plots the results.
+
+        Parameters:
+        - df (pd.DataFrame): DataFrame containing the data.
+        - numberdatapoints (int): Number of data points to use for training.
+        - cuts (tuple): Tuple specifying the range of data to consider.
+        - kernel: GPflow kernel for the Gaussian Process.
+        - mean_funct: Mean function for the Gaussian Process (default is None).
+        - likelihood: Likelihood function for the Gaussian Process (default is None).
+        - iterationlimit (int): Maximum number of optimization iterations (default is 300).
+        - method (str): Optimization method for training the model (default is 'L-BFGS-B').
+        - showStd (bool): Whether to display standard deviation in the plots (default is False).
+        - path (str): Path for saving temporary files (default is 'tmp').
+        - baseFigurePath (str): Base path for saving figures (default is './tmp/figures').
+
+        Returns:
+        gpflow.models.GPR: Trained Gaussian Process regression model.
+        """
         # sort df
         df = df.sort_values(by='L_in')
         # cut df
@@ -174,6 +245,17 @@ class XperimentPlotter:
         return model
     
     def predictApproach(df, cuts, model, showStd=False, path='tmp', baseFigurePath='./tmp/figures'):
+        """
+        Predicts outcomes using a pre-trained Gaussian Process regression model and plots the results.
+
+        Parameters:
+        - df (pd.DataFrame): DataFrame containing the data.
+        - cuts (tuple): Tuple specifying the range of data to consider.
+        - model (gpflow.models.GPR): Trained Gaussian Process regression model.
+        - showStd (bool): Whether to display standard deviation in the plots (default is False).
+        - path (str): Path for saving temporary files (default is 'tmp').
+        - baseFigurePath (str): Base path for saving figures (default is './tmp/figures').
+        """
         # sort df
         df = df.sort_values(by='L_in')
         # cut df
