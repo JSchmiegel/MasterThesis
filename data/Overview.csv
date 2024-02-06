@@ -29,7 +29,7 @@ Name,Date,Start (approx),End (approx),Filename,Num. L_in,Num. L_in Post,Num. Res
 015tempDependency2,8/9/2023,21:55,23:58,./015tempDependency2/*,32,0,0,1000,255,ascending,sc,VIEWPixx /3D Lite (serial no.:  65501-3106)
 017otrScanNear,8/25/2023,13:00,18:30,./017otrScanNear/*,NULL,NULL,NULL,NULL,255,NULL,sc,VIEWPixx (serial no.: 60001-0733)
 019OTRLichtfalle,8/29/2023,11:30,12:00,./019OTRLichtfalle/*,NULL,NULL,NULL,NULL,255,NULL,sc,VIEWPixx (serial no.: 60001-0733)
-020OTRAmplitude,9/4/2023,13:00,16:00,./020OTRAmplitude/*,NULL,NULL,NULL,NULL,255,NULL,both,VIEWPixx (serial no.: 60001-0733)
+020OTRAmplitude,9/4/2023,13:00,16:00,./020OTRAmplitude/*,NULL,NULL,NULL,NULL,changed,NULL,both,VIEWPixx (serial no.: 60001-0733)
 026tempDependency,11/17/23,18:19,8:22,./026tempDependency/*,32,0,0,1000,255,ascending,nm,VIEWPixx /3D Lite (serial no.:  65501-3106)
 027lastExperimentPart1,11/19/2023,15:06,20:14,./027lastExperimentPart1/Test01/*,4096,0,0,1000,255,random,nm,VIEWPixx /3D Lite (serial no.:  65501-3106)
 028lastExperimentPart2_b,11/20/2023,15:05,20:12,./028lastExperimentPart2_b/Test01/*,4096,0,0,1000,255,random,nm,VIEWPixx /3D Lite (serial no.:  65501-3106)
